@@ -1,97 +1,77 @@
 <html>
 <head>
 	<title> Ben's Githubfeed </title>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<style>
+
+	#github-feed, #code_for_github{
+		height: 500px;
+		width: 200px;
+		overflow: scroll;
+		border-radius: 5px;
+		border: solid grey 1px;
+		display: inline-block;
+		float: left;
+
+		}
+	#github-feed img{
+		height: 17px;
+		margin-top: 10px;
+     }
+     #code_for_git_hub{
+     	float: left;
+     	word-wrap: break-word;
+     	max-width: 500px;
+     	margin-top: 15px;
+     	margin-left: 10px;
+     	display: inline-block;
+		background-color: lavenderblush;
+		padding: 5px;
+		border-radius: 3px;
+		border: solid 1px lightgrey;
+		padding: 5px;
+     }
+
+
+	 </style>
 </head>	
 <body>
 
 				<h1> Ben's Githubfeed Generator</h1>
 
-					<p> This needs work but I still wanted to share. </p>
+				<p> This needs work but I still wanted to share. </p>
 
 
-					 <input type='text' id="github-user" placeholder="Enter Github user name" ></input>
+				 <input type='text' id="github-user" placeholder="Enter Github user name" ></input>
 
-	 	         	<button id="github_update">Get User feed</button>
-					<button id="github_code_create">Generate Code</button>
+ 	         	
+				<button id="github_code_create">Generate Code</button>
+			
+
+
 				<div class="github-feed" id="gitblock" > 
+ 	         	  
+ 	
 
-					<style>
-
-					#github-feed, #code_for_github{
-						height: 500px;
-						width: 200px;
-						overflow: scroll;
-						border-radius: 5px;
-						border: solid grey 1px;
-						display: inline-block;
-						float: left;
-
-						}
-					#github-feed img{
-						height: 17px;
-						margin-top: 10px;
-				     }
-				     #code_for_git_hub{
-				     	float: left;
-				     	word-wrap: break-word;
-				     	max-width: 500px;
-				     	margin-top: 15px;
-				     	margin-left: 10px;
-				     	display: inline-block;
-						background-color: lavenderblush;
-						padding: 5px;
-						border-radius: 3px;
-    					border: solid 1px lightgrey;
-    					padding: 5px;
-				     }
-
-
-					</style>
-
-	 	         	<ul id='github-feed' > 
-
-
-                	</ul>
                 </div>
-                 <div>
+                <div>
 	             	<pre>
-	             	  <code id='code_for_git_hub' >
-
-
+	             	  <code id='code_for_git_hub'	>
 	             	  </code>
-	             	 </pre>
+	             	</pre>
 	            </div>
 
-                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-                <script type="text/javascript">
-            	
-            	  
-                  $('#github_update').click(function () { 
-                  	   $('#github-feed').empty();
-
-                  	   var user = $('#github-user').val();
-            	       var githubapitarget = 'https://api.github.com/users/' +  user + '/events/public';
-                  		$.getJSON( githubapitarget, 
-					      function(data){ 
-					        console.log(data);
-
-					     
-					      $.each(data, function(index, element) {
-					        $('#github-feed').append($('<li> <img src=' + element.actor.avatar_url 
-					        +'/><b> User: </b>' + element.actor.login + '</li><li><b> Event type: </b> ' + element.type  + '</li> <li><b> commits: </b>' + '</li>' + '<li><b> Created: </b> ' + element.created_at + '</li>')); 
-					      	});
-					    });
-					});
-
-		
-
-                  </script>
+              
                   <script type="text/javascript">
                   	$("#github_code_create").click( function(){  
-					var user = $('#github-user').val();                  
+					var user = $('#github-user').val();
+             
 
 					var output = "<div class='github-feed' id='gitblock' ><a href='https:\/\/github.com\/"+ user + "'><span id='github-user' value='"+ user + "'><\/span><style>#github-feed{height: 500px;width: 200px;overflow: scroll;border-radius: 5px;border: solid grey 1px; text-decoration:none; } #github-feed img{height: 17px; margin-top: 10px; } .github-feed a{ text-decoration:none; } <\/style> <ul id='github-feed' > <\/ul> <\/a><\/div><script src='http:\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/1.11.1\/jquery.min.js'><\/script> <script type='text\/javascript'> var githubapitarget = 'https:\/\/api.github.com\/users\/" +  user + "\/events\/public'; $.getJSON(githubapitarget, function(data){$.each(data, function(index, element) {$('#github-feed').append($('<li> <img src=' + element.actor.avatar_url +'\/><b> User: <\/b>' + element.actor.login + '<\/li><li><b> Event type: <\/b> ' + element.type  + '<\/li> <li><b> commits: <\/b>' + '<\/li>' + '<li><b> Created: <\/b> ' + element.created_at + '<\/li>')); }); } );<\/script>";
 					$('#code_for_git_hub').text(output);
+					$('#gitblock').html(output)
+
 					});
 
 
