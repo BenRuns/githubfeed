@@ -1,5 +1,6 @@
-# githubfeed
-Some code to add a github feed to your website
+##Githubfeed
+I wrote some simple code for my personal website so that I could have a feed of my recent activity on github. I wanted to dry out the code so that I could use it for anyone's activity. 
 
+A little more tweaking and I had a generator that made code very similar to twitter. It needs work. This is live on [github pages](http://benruns.github.io/githubfeed/)
 
-This will generate code so that you can put a github feed on on your website. Open index.html in a browser and the rest is self explanatory
+Enjoy
