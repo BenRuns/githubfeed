@@ -1,5 +1,5 @@
 
-##Githubfeed
+## Githubfeed
 
 I wrote some simple code for my personal website so that I could have a feed of my recent activity on github. I wanted to dry out the code so that I could use it for anyone's activity. 
 
